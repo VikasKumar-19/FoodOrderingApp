@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View, Dimensions, Image } from "react-native";
 import React, { useEffect, useState } from "react";
 import * as Location from "expo-location";
+import { LandingScreenProps } from "../types";
 
 const screenWidth = Dimensions.get("screen").width;
-
-const LandingScreen = () => {
+const LandingScreen = ({ navigation }: LandingScreenProps) => {
   const [location, setLocation] = useState<Location.LocationGeocodedAddress>();
   const [errorMsg, setErrorMsg] = useState("");
   const [displayAddress, setDisplayAddress] = useState("");
@@ -40,6 +40,11 @@ const LandingScreen = () => {
           }
           if (item.postalCode) {
             currAddress += item.postalCode;
+          }
+          if (currAddress.length > 0) {
+            setTimeout(() => {
+              navigation.navigate("Home")
+            }, 1500);
           }
           setDisplayAddress(currAddress);
         }
