@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, Dimensions, Image } from "react-native";
 import React, { useEffect, useState } from "react";
 import * as Location from "expo-location";
-import { LandingScreenProps } from "../types";
+import { LandingScreenProps } from "../utils/types";
 
 const screenWidth = Dimensions.get("screen").width;
 const LandingScreen = ({ navigation }: LandingScreenProps) => {
@@ -43,7 +43,7 @@ const LandingScreen = ({ navigation }: LandingScreenProps) => {
           }
           if (currAddress.length > 0) {
             setTimeout(() => {
-              navigation.navigate("Home")
+              navigation.navigate("Home");
             }, 1500);
           }
           setDisplayAddress(currAddress);

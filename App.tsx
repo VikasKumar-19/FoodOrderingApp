@@ -8,7 +8,9 @@ import SearchAddressScreen from "./src/screens/SearchAddressScreen";
 import HomeScreen from "./src/screens/HomeScreen";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
-import { RootStackParamList } from "./src/types";
+import { RootStackParamList } from "./src/utils/types";
+import { Provider } from "react-redux";
+import { store } from "./src/redux-app/store";
 
 const Tab = createBottomTabNavigator();
 
@@ -77,9 +79,11 @@ const LandingStack = () => {
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <LandingStack />
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <LandingStack />
+      </NavigationContainer>
+    </Provider>
   );
 }
 
